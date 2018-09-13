@@ -1,7 +1,7 @@
 {
   "name": "redux-store-templates",
   "version": "0.0.1",
-  "description": "redux store/state templates for common scenarios",
+  "description": "Set of helpers to create useful and commonly used redux store patterns",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf counter list set-simple task-simple toggle value index.js models.ts",
@@ -23,6 +23,7 @@
     "state",
     "schema",
     "pattern",
+    "best practices",
     "template",
     "typesctipt"
   ],
