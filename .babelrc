@@ -1,0 +1,23 @@
+{
+  "env": {
+    "es2018": {
+      "plugins": ["@babel/plugin-syntax-object-rest-spread"]
+    },
+    "es2017": {
+      "plugins": [
+        [
+          "@babel/plugin-proposal-object-rest-spread",
+          {
+            "useBuiltIns": true
+          }
+        ],
+        ["@babel/plugin-transform-runtime"]
+      ]
+    },
+    "test": {
+      "presets": [
+        ["@babel/env", { "modules": "commonjs" }]
+      ]
+    }
+  }
+}

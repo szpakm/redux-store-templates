@@ -1,0 +1,7 @@
+{
+  "name": "redux-store-templates",
+  "jest": {
+    "verbose": true,
+    "testRegex": "(/test/.*\\.spec.js)$"
+  }
+}

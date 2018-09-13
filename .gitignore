@@ -1,0 +1,13 @@
+node_modules/
+
+#build outputs
+/counter/
+/list/
+/set-simple/
+/task-simple/
+/toggle/
+/value/
+/.internals/
+/models.ts
+/index.js
+/coverage/
