@@ -6,7 +6,7 @@ describe("counter", () => {
       initial: 10
     });
 
-    expect(reducer(5)).toEqual(5);
+    expect(reducer(5, {})).toEqual(5);
   });
 
   it("counter - increment", () => {
