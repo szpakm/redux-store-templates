@@ -1,6 +1,6 @@
 {
   "name": "redux-store-templates",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Set of helpers to create useful and commonly used redux store patterns",
   "main": "index.js",
   "scripts": {
@@ -51,7 +51,7 @@
     "tslint-config-prettier": "^1.14.0",
     "typescript": "^3.0.1"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@babel/runtime": "^7.0.0"
   }
 }
