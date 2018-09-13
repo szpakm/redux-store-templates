@@ -6,7 +6,7 @@ It's lightweight, dependency-free, can work with typescript and you can easily i
 
 ***
 
-### [:heavy_exclamation_mark:] [:heavy_exclamation_mark:] [:heavy_exclamation_mark:] This is unstable yet (heavy development in progress) [:heavy_exclamation_mark:] [:heavy_exclamation_mark:] [:heavy_exclamation_mark:]
+### :heavy_exclamation_mark: :heavy_exclamation_mark: :heavy_exclamation_mark: This is unstable yet (heavy development in progress) :heavy_exclamation_mark: :heavy_exclamation_mark: :heavy_exclamation_mark:
 
 ***
 
@@ -88,7 +88,7 @@ export const selectProductById = (state, id) => {
 }
 ```
 
-Or use provided helpers
+Or use provided helpers:
 
 ```js
 // products/selectors.js
@@ -150,7 +150,7 @@ export default combineReducers({
 })
 ```
 
-which replaces 100+ lines reducer - this is where **`redux-store-templates`** shines. [:sparkles:]
+which replaces 100+ lines reducer - this is where **`redux-store-templates`** shines. :sparkles:
 
 ***
 
