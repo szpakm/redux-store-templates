@@ -1,6 +1,6 @@
 node_modules/
 
-#build outputs
+#build/test outputs
 /counter/
 /list/
 /set-simple/
@@ -11,3 +11,4 @@ node_modules/
 /models.ts
 /index.js
 /coverage/
+/es2015/

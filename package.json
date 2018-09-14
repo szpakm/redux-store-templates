@@ -1,15 +1,16 @@
 {
   "name": "redux-store-templates",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Set of helpers to create useful and commonly used redux store patterns",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf counter list set-simple task-simple toggle value index.js models.ts",
-    "build:module": "cross-env BABEL_ENV=es2017 babel src --out-dir ./ --copy-files",
+    "clean": "rimraf counter .internals list set-simple task-simple toggle value index.js models.ts coverage es2015",
+    "build:es2018": "cross-env BABEL_ENV=es2018 babel src --out-dir ./ --copy-files",
+    "build:es2015": "cross-env BABEL_ENV=es2015 babel src --out-dir ./es2015 --copy-files",
     "test": "cross-env BABEL_ENV=test jest",
     "test:coverage": "npm test -- --coverage",
     "test:watch": "npm test -- --watch",
-    "build": "npm run clean && npm run build:module",
+    "build": "npm run clean && npm run build:es2018 && npm run build:es2015",
     "prepare": "npm run clean && npm run build"
   },
   "repository": {
@@ -36,9 +37,7 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-rc.1",
     "@babel/core": "^7.0.0-rc.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.1",
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
@@ -50,8 +49,5 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.14.0",
     "typescript": "^3.0.1"
-  },
-  "peerDependencies": {
-    "@babel/runtime": "^7.0.0"
   }
 }
