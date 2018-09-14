@@ -179,3 +179,14 @@ or
 
 `yarn add redux-store-templates`
 
+**Caution**
+
+By default **`redux-store-templates`** is written in ECMAScript 2018 language standard and it is recommended that you transpile it inside your project by your own (using ex. [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env)).
+
+If you need older EcmaScript version, then import it from `es2015` directory:
+
+```js
+// import transpiled EcmaScript 2015 version
+import { list } from 'redux-store-templates/es2015/list';
+```
+

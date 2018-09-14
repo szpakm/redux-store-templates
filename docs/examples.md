@@ -82,7 +82,7 @@ export default combineReducers({
 Will produce the following store structure:
 
   ...,
-  isVisible: 0
+  isVisible: true
 */
 ```
 
