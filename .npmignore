@@ -1,6 +1,5 @@
 node_modules/
-config/
 coverage/
 .idea/
 .vscode/
-todo.md
+.gitignore
