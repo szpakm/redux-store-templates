@@ -21,6 +21,13 @@ describe(".internals/mutations/applyAddIds", () => {
 
     expect(applyAddIds(source, add)).toEqual(["1", "2", "a"]);
   });
+
+  it("add ids to empty set", () => {
+    const source = [];
+    const add = ["a", "b", "1"];
+
+    expect(applyAddIds(source, add)).toEqual(["a", "b", "1"]);
+  });
 });
 
 describe(".internals/mutations/applyUpdateById", () => {
