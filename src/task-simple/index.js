@@ -58,13 +58,13 @@ export const createReducer = ({ startOn, successOn, errorOn } = {}) => {
   };
 };
 
-export const createSelector = ({ selector, fields = [], uuid = "" }) => {
+export const createSelector = ({ selector, fields }) => {
   // TODO - performance
   return state => {
     const selectedTask = selector(state);
     if (!selectedTask) {
       throw new Error(
-        `Could not find state for TaskSimple.selector with uuid: ${uuid}`
+        'Could not find state for TaskSimple.selector'
       );
     }
 

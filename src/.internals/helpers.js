@@ -1,4 +1,14 @@
-export const pick = (source = {}, what = []) => {
+import { arrayify } from "tslint/lib/utils";
+
+export const readAsArray = (data) => {
+  return Array.isArray(data) ? data : [data];
+}
+
+export const pick = (source = {}, what) => {
+  if (typeof what === 'string') {
+    return source[what];
+  }
+
   if (Array.isArray(what)) {
     return what.reduce((acc, curr) => {
       acc[curr] = source[curr];
@@ -6,8 +16,9 @@ export const pick = (source = {}, what = []) => {
       return acc;
     }, {});
   }
-  // else what is string
-  return source[what];
+
+  // else return all
+  return source;
 };
 
 export const makeActionCreator = (action = {}, options = {}) => {
@@ -31,9 +42,6 @@ export const warn = message =>
 
 const _cache = Object.create(null);
 export const createPathReader = (path = "payload") => {
-  if (path === undefined) {
-    throw new Error("redux-store-templates: path cannot be empty");
-  }
   const uuid = String(path);
 
   if (_cache[uuid]) {
@@ -63,6 +71,3 @@ export const createPathReader = (path = "payload") => {
   return _cache[uuid];
 };
 
-export const readAsArray = (data) => {
-  return Array.isArray(data) ? data : [data];
-}

@@ -23,10 +23,13 @@ export function createReducer(
 /* create selector */
 
 export interface CreateSelectorOptions {
-  fields: keyof TaskSimpleState | (keyof TaskSimpleState)[];
+  fields?: keyof TaskSimpleState | (keyof TaskSimpleState)[];
   selector(state: any): TaskSimpleState;
 }
 
+export function createSelector(
+  opt: CreateSelectorOptions
+): (state: any) => TaskSimpleState;
 export function createSelector(
   opt: { fields: keyof TaskSimpleState } & CreateSelectorOptions
 ): (state: any) => TaskSimpleState[keyof TaskSimpleState]; // TODO - improve
