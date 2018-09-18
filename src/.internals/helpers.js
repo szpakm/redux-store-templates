@@ -38,7 +38,7 @@ export const makeActionCreator = (action = {}, options = {}) => {
 };
 
 export const warn = message =>
-  console.warn("redux-store-templates: " + message);
+  (console.warn || Function.prototype)("redux-store-templates: " + message);
 
 const _cache = Object.create(null);
 export const createPathReader = (path = "payload") => {
