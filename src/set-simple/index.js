@@ -11,7 +11,7 @@ export const createReducer = ({
   addOn,
   removeOn,
   clearOn
-}) => {
+} = {}) => {
   const defaultState = initial;
   const emptyState = [];
   const handleAction = Object.create(null);

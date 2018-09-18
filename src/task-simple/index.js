@@ -1,6 +1,6 @@
 import { pick, warn, createPathReader, readAsArray } from "../.internals";
 
-export const createReducer = ({ startOn, successOn, errorOn }) => {
+export const createReducer = ({ startOn, successOn, errorOn } = {}) => {
   const defaultState = {
     isPending: false,
     error: ""

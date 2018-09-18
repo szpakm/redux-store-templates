@@ -12,7 +12,7 @@ export const createReducer = ({
   decrementByOn,
   setOn,
   resetOn
-}) => {
+} = {}) => {
   const resetState = 0;
   const handleAction = Object.create(null);
 

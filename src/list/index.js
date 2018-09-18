@@ -17,7 +17,7 @@ export const createReducer = ({
   updateOn,
   removeOn,
   emptyOn
-}) => {
+} = {}) => {
   const addToById = createAddById(idName);
   const addToIds = createAddIds(idName);
   const defaultState = {

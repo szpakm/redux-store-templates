@@ -7,7 +7,7 @@ export const createReducer = ({
   makeFalseOn,
   setOn,
   resetOn
-}) => {
+} = {}) => {
   const resetState = initial;
   const handleAction = Object.create(null);
 
