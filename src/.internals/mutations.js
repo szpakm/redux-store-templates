@@ -19,10 +19,15 @@ export const applyUpdateById = (byId = {}, id, updates = {}) => {
   };
 };
 
-export const createAddById = keyName => (list = [], items = []) => {
+export const applyRemoveIds = (ids = [], removeIds = []) => {
+  const idsToRemove = readAsArray(removeIds);
+
+  return ids.filter(id => !idsToRemove.includes(id));
+};
+
+export const createAddById = keyName => (byId = {}, items = []) => {
   const itemsToAdd = readAsArray(items);
 
-  // exract it to separate func
   const add = itemsToAdd.reduce(
     (acc, curr) => ({
       ...acc,
@@ -32,7 +37,7 @@ export const createAddById = keyName => (list = [], items = []) => {
   );
 
   return {
-    ...list,
+    ...byId,
     ...add
   };
 };
@@ -57,10 +62,4 @@ export const createAddIds = keyName => (ids = [], items = []) => {
   const addIds = itemsToAdd.map(item => item[keyName]);
 
   return applyAddIds(ids, addIds);
-};
-
-export const applyRemoveIds = (ids = [], removeIds = []) => {
-  const idsToRemove = readAsArray(removeIds);
-
-  return ids.filter(id => !idsToRemove.includes(id));
 };
