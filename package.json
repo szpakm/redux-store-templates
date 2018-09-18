@@ -1,8 +1,8 @@
 {
   "name": "redux-store-templates",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Set of helpers to create useful and commonly used redux store patterns",
-  "main": "index.js",
+  "main": "es2015/index.js",
   "scripts": {
     "clean": "rimraf counter .internals list set-simple task-simple toggle value index.js models.ts coverage es2015",
     "build:es2018": "cross-env BABEL_ENV=es2018 babel src --out-dir ./ --copy-files",
