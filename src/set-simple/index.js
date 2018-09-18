@@ -10,7 +10,7 @@ export const createReducer = ({
   setOn,
   addOn,
   removeOn,
-  clearOn
+  emptyOn
 } = {}) => {
   const defaultState = initial;
   const emptyState = [];
@@ -19,7 +19,7 @@ export const createReducer = ({
   if (setOn) {
     readAsArray(setOn).forEach(opt => {
       const readActionPayload = createPathReader(opt.payloadPath);
-      handleAction[opt.type] = action => {
+      handleAction[opt.type] = (state, action) => {
         return applyAddIds([], readActionPayload(action));
       };
     });
@@ -40,8 +40,8 @@ export const createReducer = ({
       };
     });
   }
-  if (clearOn) {
-    readAsArray(clearOn).forEach(opt => {
+  if (emptyOn) {
+    readAsArray(emptyOn).forEach(opt => {
       handleAction[opt.type] = () => emptyState;
     });
   }
