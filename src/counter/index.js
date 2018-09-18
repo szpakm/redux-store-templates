@@ -47,13 +47,6 @@ export const createReducer = ({
       const readActionPayload = createPathReader(opt.payloadPath);
       handleAction[opt.type] = (state, action) => {
         const val = readActionPayload(action);
-        if (typeof val !== "number") {
-          warn(
-            `counter: setOn for action "${opt.type}" should have property ${
-              opt.payloadPath
-            }:number`
-          );
-        }
         return val;
       };
     });
