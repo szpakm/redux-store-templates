@@ -1,9 +1,3 @@
-import { arrayify } from "tslint/lib/utils";
-
-export const readAsArray = (data) => {
-  return Array.isArray(data) ? data : [data];
-}
-
 export const pick = (source = {}, what) => {
   if (typeof what === 'string') {
     return source[what];
@@ -36,9 +30,6 @@ export const makeActionCreator = (action = {}, options = {}) => {
     ...actionObject
   });
 };
-
-export const warn = message =>
-  (console.warn || Function.prototype)("redux-store-templates: " + message);
 
 const _cache = Object.create(null);
 export const createPathReader = (path = "payload") => {

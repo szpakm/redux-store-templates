@@ -1,8 +1,9 @@
 /* object/array - immutable modifications helpers */
 
+import { readAsArray } from "./utils";
 
 export const applyAddIds = (ids = [], addIds = []) => {
-  const idsToAdd = Array.isArray(addIds) ? addIds : [addIds];
+  const idsToAdd = readAsArray(addIds);
 
   return [...ids.filter(id => !idsToAdd.includes(id)), ...idsToAdd];
 };
@@ -14,12 +15,12 @@ export const applyUpdateById = (byId = {}, id, updates = {}) => {
 
   return {
     ...byId,
-    [id]: { ...byId[id], ...updates}
+    [id]: { ...byId[id], ...updates }
   };
-}
+};
 
 export const createAddById = keyName => (list = [], items = []) => {
-  const itemsToAdd = Array.isArray(items) ? items : [items];
+  const itemsToAdd = readAsArray(items);
 
   // exract it to separate func
   const add = itemsToAdd.reduce(
@@ -37,7 +38,7 @@ export const createAddById = keyName => (list = [], items = []) => {
 };
 
 export const createRemoveById = keyName => (byId = {}, removeIds = []) => {
-  const idsToRemove = Array.isArray(removeIds) ? removeIds : [removeIds];
+  const idsToRemove = readAsArray(removeIds);
 
   return Object.keys(byId)
     .filter(key => !idsToRemove.includes(key))
@@ -52,14 +53,14 @@ export const createRemoveById = keyName => (byId = {}, removeIds = []) => {
 };
 
 export const createAddIds = keyName => (ids = [], items = []) => {
-  const itemsToAdd = Array.isArray(items) ? items : [items];
+  const itemsToAdd = readAsArray(items);
   const addIds = itemsToAdd.map(item => item[keyName]);
 
   return applyAddIds(ids, addIds);
 };
 
 export const applyRemoveIds = (ids = [], removeIds = []) => {
-  const idsToRemove = Array.isArray(removeIds) ? removeIds : [removeIds];
+  const idsToRemove = readAsArray(removeIds);
 
   return ids.filter(id => !idsToRemove.includes(id));
 };
