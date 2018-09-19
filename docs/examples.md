@@ -201,4 +201,4 @@ Will produce the following store structure:
 
 #### list
 
-got to main [README.md](../README.md#list)
+go to main [README.md](../README.md#list)

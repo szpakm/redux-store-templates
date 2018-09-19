@@ -1,7 +1,7 @@
 declare module "redux-store-templates/list";
 
 import { Reducer } from "redux";
-import { ApplyOptions } from '../models';
+import { ApplyOptions } from "../models";
 
 export interface ListState<T = any> {
   byId: { [key: string]: T };
@@ -37,4 +37,7 @@ export interface CreateSelectorByIdOptions {
 }
 export function createSelectorById<T = any>(
   opt: CreateSelectorByIdOptions
-): (state: any) => T;
+): (state: any, id: string) => T;
+export function createSelectorById<T = any>(
+  opt: CreateSelectorByIdOptions
+): (state: any, id: string[]) => T[];
