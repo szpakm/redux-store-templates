@@ -38,7 +38,6 @@ export const createReducer = ({
 
         return {
           ...state,
-          selectedIds: emptyState.selectedIds,
           byId: addToById({}, items),
           ids: addToIds([], items)
         };
@@ -67,9 +66,9 @@ export const createReducer = ({
         const itemId = updates[idName];
         if (!itemId) {
           warn(
-            `list-advanced: updateOn: action "${
-              opt.type
-            }" has no idName param. Missing param ${opt.payloadPath}.${idName}`
+            `list: updateOn: action "${opt.type}" doesn't have param ${
+              opt.payloadPath
+            }.${idName}`
           );
           return state;
         }
@@ -92,8 +91,7 @@ export const createReducer = ({
         return {
           ...state,
           byId: removeFromById(state.byId, ids),
-          ids: applyRemoveIds(state.ids, ids),
-          selectedIds: applyRemoveIds(state.selectedIds, ids)
+          ids: applyRemoveIds(state.ids, ids)
         };
       };
     });
@@ -104,8 +102,7 @@ export const createReducer = ({
         return {
           ...state,
           byId: emptyState.byId,
-          ids: emptyState.ids,
-          selectedIds: emptyState.selectedIds
+          ids: emptyState.ids
         };
       };
     });
@@ -127,5 +124,12 @@ export const createSelectorAll = ({ selector }) => state => {
 };
 
 export const createSelectorById = ({ selector }) => {
-  return (state, id) => selector(state).byId[id];
+  return (state, id) => {
+    const byId = selector(state).byId;
+    if (Array.isArray(id)) {
+      return id.map(itemId => byId[itemId]);
+    }
+    // else id: string
+    return byId[id];
+  };
 };
