@@ -1,5 +1,7 @@
-node_modules/
 coverage/
-.idea/
-.vscode/
+node_modules/
+test/
 .gitignore
+.idea/
+.jest.config.json
+.vscode/

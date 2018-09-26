@@ -1,8 +1,9 @@
 {
   "name": "redux-store-templates",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "Set of helpers to create useful and commonly used redux store patterns",
   "main": "es2015/index.js",
+  "module": "index.js",
   "scripts": {
     "clean": "rimraf counter .internals list set-simple task-simple toggle value index.js models.ts coverage es2015",
     "build:es2018": "cross-env BABEL_ENV=es2018 babel src --out-dir ./ --copy-files",
@@ -28,7 +29,7 @@
     "template",
     "typesctipt"
   ],
-  "author": "szpakm",
+  "author": "szpakm <szpak@pm.me>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/szpakm/redux-store-templates/issues"

@@ -6,7 +6,9 @@
       ]
     },
     "es2015": {
-      "presets": ["@babel/env"]
+      "presets": [
+        "@babel/env"
+      ]
     },
     "test": {
       "presets": [
