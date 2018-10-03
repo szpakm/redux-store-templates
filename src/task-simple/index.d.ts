@@ -11,9 +11,9 @@ export interface TaskSimpleState {
 /* create reducer */
 
 export interface CreateReducerOptions {
-  startOn: ApplyOptions;
-  successOn: ApplyOptions;
-  errorOn: ApplyOptions;
+  startOn?: ApplyOptions;
+  successOn?: ApplyOptions;
+  errorOn?: ApplyOptions;
 }
 
 export function createReducer(
