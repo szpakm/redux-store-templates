@@ -173,7 +173,7 @@ todo
 
 ## Installation
 
-`npm install redux-store-templates`
+`npm install --save redux-store-templates`
 
 or
 
