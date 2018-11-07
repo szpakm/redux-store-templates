@@ -6,10 +6,6 @@ It's lightweight, dependency-free, can work with typescript and you can easily i
 
 ***
 
-### :heavy_exclamation_mark: :heavy_exclamation_mark: :heavy_exclamation_mark: Development in progress :heavy_exclamation_mark: :heavy_exclamation_mark: :heavy_exclamation_mark:
-
-***
-
 ## Example of usage
 
 #### list
