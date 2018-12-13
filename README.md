@@ -60,8 +60,6 @@ Then you can create selectors standard way:
 
 ```js
 // products/selectors.js
-import { createSelectorAll, createSelectorById } from 'redux-store-templates/list';
-
 
 const selectProductsState = (state) => state.products;
 
@@ -183,6 +181,6 @@ If you need older EcmaScript version, then import it from `es2015` directory:
 
 ```js
 // import transpiled EcmaScript 2015 version
-import { list } from 'redux-store-templates/es2015/list';
+import { createReducer } from 'redux-store-templates/es2015/list';
 ```
 
