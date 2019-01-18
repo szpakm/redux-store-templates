@@ -8,16 +8,26 @@ export const applyAddIds = (ids = [], addIds = []) => {
   return [...ids.filter(id => !idsToAdd.includes(id)), ...idsToAdd];
 };
 
-export const applyUpdateById = (byId = {}, id, updates = {}) => {
-  if (byId[id] === undefined) {
-    return byId;
-  }
+export const createUpdateById = idName => (byId = {}, updates = []) => {
+  const itemsUpdates = readAsArray(updates);
 
-  return {
-    ...byId,
-    [id]: { ...byId[id], ...updates }
-  };
-};
+  // return byId with updated items
+  return itemsUpdates.reduce((acc, curr) => {
+    const idOfItemToBeUpdated = curr[idName];
+    const itemToBeUpdated = byId[idOfItemToBeUpdated];
+
+    if (!idOfItemToBeUpdated || !itemToBeUpdated) {
+      // don't do anything if update has no corresponding existing item
+      return acc;
+    }
+
+    return {
+      ...acc,
+      [idOfItemToBeUpdated]: { ...itemToBeUpdated, ...curr }
+    }
+  }, byId);
+}
+
 
 export const applyRemoveIds = (ids = [], removeIds = []) => {
   const idsToRemove = readAsArray(removeIds);

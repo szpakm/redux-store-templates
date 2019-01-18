@@ -1,9 +1,9 @@
 import {
-  applyAddIds,
-  applyUpdateById,
+  createUpdateById,
   createAddById,
   createRemoveById,
   createAddIds,
+  applyAddIds,
   applyRemoveIds
 } from "../../src/.internals/mutations";
 
@@ -30,26 +30,54 @@ describe(".internals/mutations/applyAddIds", () => {
   });
 });
 
-describe(".internals/mutations/applyUpdateById", () => {
-  it("update item", () => {
+describe(".internals/mutations/createUpdateById", () => {
+  it("create function that update BYID single item", () => {
     const source = { x: { id: "x", val: "X" } };
-    const update = { val2: "Y" };
+    const update = { id: "x", val2: "Y" };
 
-    expect(applyUpdateById(source, "x", update)).toEqual({
+    const updateById = createUpdateById("id");
+
+    expect(updateById(source, update)).toEqual({
       x: { id: "x", val: "X", val2: "Y" }
     });
   });
 
-  it("returns unchanged when id is not found", () => {
-    const source = { x: { id: "x", val: "X" } };
-    const update = { val2: "Y" };
+  it("create function that update BYID multiple items", () => {
+    const source = {
+      "1": { id: "1", val: "X1" },
+      "2": { id: "2", val: "X2"}
+    };
+    const updates = [
+      { id: "1", val2: "Y1" },
+      { id: "2", val2: "Y2"}
+    ];
 
-    expect(applyUpdateById(source, "z", update)).toEqual(source);
+    const updateById = createUpdateById("id");
+
+    expect(updateById(source, updates)).toEqual({
+      "1": { id: "1", val: "X1", val2: "Y1" },
+      "2": { id: "2", val: "X2", val2: "Y2" },
+    });
+  });
+
+  it("create function that returns BYID unchanged when item to update is not found", () => {
+    const source = {
+      "1": { id: "1", val: "X1" }
+    };
+    const updates = [
+      { id: "2", val2: "Y2"}
+    ];
+
+    const updateById = createUpdateById("id");
+
+    expect(updateById(source, updates)).toEqual({
+      "1": { id: "1", val: "X1"}
+    });
   });
 });
 
 describe(".internals/mutations/applyRemoveIds", () => {
-  it("remove items from set", () => {
+  it("remove multiple items from set", () => {
     const source = ["1", "2"];
     const remove = ["a", "b", "1"];
 
@@ -65,7 +93,7 @@ describe(".internals/mutations/applyRemoveIds", () => {
 });
 
 describe(".internals/mutations/createAddById", () => {
-  it("create funct that add BYID item", () => {
+  it("create funct that add BYID single item", () => {
     const source = { x: { uuid: "x" } };
     const update = { uuid: "y" };
 
@@ -79,7 +107,7 @@ describe(".internals/mutations/createAddById", () => {
 });
 
 describe(".internals/mutations/createRemoveById", () => {
-  it("create funct that add BYID item", () => {
+  it("create funct that removes BYID multiple items", () => {
     const source = {
       x: { uuid: "x" },
       y: { uuid: "y" }
@@ -93,7 +121,7 @@ describe(".internals/mutations/createRemoveById", () => {
 });
 
 describe(".internals/mutations/createAddIds", () => {
-  it("create funct that add BYID item", () => {
+  it("create funct that add BYID multiple items", () => {
     const source = ["x", "a", "b"];
     const add = [{ uuid: "x" }, { uuid: "y" }];
     const addIds = createAddIds("uuid");

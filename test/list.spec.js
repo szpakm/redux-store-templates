@@ -105,7 +105,7 @@ describe("list", () => {
       });
     });
 
-    it("updates item on updateOn", () => {
+    it("updates single item on updateOn", () => {
       const reducer = createReducer({
         idName: "idx",
         updateOn: { type: "updateOn" }
@@ -122,6 +122,39 @@ describe("list", () => {
       ).toEqual({
         byId: { id0: { idx: "id0", updated: true, name: "name1" } },
         ids: ["id0"]
+      });
+    });
+
+    it("updates multiple items on updateOn", () => {
+      const reducer = createReducer({
+        idName: "idx",
+        updateOn: { type: "updateOn" }
+      });
+
+      expect(
+        reducer(
+          {
+            byId: {
+              id0: { idx: "id0", name: "name0" },
+              id1: { idx: "id1", name: "name1" }
+            },
+            ids: ["id0", "id1"]
+          },
+          {
+            type: "updateOn",
+            payload: [
+              { idx: "id0", updated: true },
+              { idx: "id1", updated: true },
+              { idx: "id2", updated: true },
+            ]
+          }
+        )
+      ).toEqual({
+        byId: {
+          id0: { idx: "id0", updated: true, name: "name0" },
+          id1: { idx: "id1", updated: true, name: "name1" },
+        },
+        ids:  ["id0", "id1"]
       });
     });
 

@@ -2,10 +2,10 @@ import {
   createPathReader,
   createAddById,
   createAddIds,
+  createUpdateById,
   createRemoveById,
   applyRemoveIds,
-  warn,
-  applyUpdateById,
+  warn,  
   readAsArray
 } from "../.internals";
 
@@ -20,6 +20,7 @@ export const createReducer = ({
 } = {}) => {
   const addToById = createAddById(idName);
   const addToIds = createAddIds(idName);
+  const updateById = createUpdateById(idName);
   const defaultState = {
     byId: addToById({}, initial),
     ids: addToIds([], initial)
@@ -63,19 +64,10 @@ export const createReducer = ({
       const readActionPayload = createPathReader(opt.payloadPath);
       handleAction[opt.type] = (state, action) => {
         const updates = readActionPayload(action);
-        const itemId = updates[idName];
-        if (!itemId) {
-          warn(
-            `list: updateOn: action "${opt.type}" doesn't have param ${
-              opt.payloadPath
-            }.${idName}`
-          );
-          return state;
-        }
 
         return {
           ...state,
-          byId: applyUpdateById(state.byId, itemId, updates)
+          byId: updateById(state.byId, updates)
         };
       };
     });
